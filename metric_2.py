@@ -13,10 +13,15 @@ if st.checkbox('Show raw data'):
     st.write(df2)
 
 #County multiselect
-full_county_list = list(df2['COUNTY/METRO'].values)
-our_counties = ['Wayne County', 'Macomb County', 'Oakland County']
-df2 = df2[df2['COUNTY/METRO'].isin(our_counties)]
-df2 = pd.melt(df2, id_vars=['COUNTY/METRO'])
+if st.checkbox('Show filtered data'):
+    st.subheader('Filtered data')
+    full_county_list = list(df2['COUNTY/METRO'].values)
+    options = st.multiselect('Select counties to inspect',
+    full_county_list)
+    our_counties = options
+    df2 = df2[df2['COUNTY/METRO'].isin(our_counties)]
+    df2 = pd.melt(df2, id_vars=['COUNTY/METRO'])
+    st.write(df2)
 
 
 #g.despine(left=True)
