@@ -12,7 +12,8 @@ if st.checkbox('Show raw data'):
     st.subheader('Raw data')
     st.write(df2)
 
-#Our counties
+#County multiselect
+full_county_list = list(df2['COUNTY/METRO'].values)
 our_counties = ['Wayne County', 'Macomb County', 'Oakland County']
 df2 = df2[df2['COUNTY/METRO'].isin(our_counties)]
 df2 = pd.melt(df2, id_vars=['COUNTY/METRO'])
