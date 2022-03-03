@@ -50,3 +50,18 @@ if st.checkbox('Show our county chart'):
     fig.tight_layout()
     plt.xticks(x, labels)
     st.pyplot(fig)
+
+    with st.expander("Click for explanation"):
+     st.write("""
+        In 2019 in the USA, a renter household needs an annual income of $51,789 to afford a two-bedroom rental home at the 
+        Fair Market Rent.
+
+        "Affordable" rents represent the generallly accepted standard of spending no more than 30% of gross income on gross 
+        housing costs.
+
+        Calculation: 
+        Multiply the FMR for a unit of a particular size by 12 to get the yearly rental cost (2BR: 1,294.73 x 12 = 15,537). 
+        Then divide by .3 to determine the total income needed to afford 15,537 per year in rent (115,537 / .3 = 51,789).
+        
+        Source: NLIHC Out of Reach 2021
+     """)
