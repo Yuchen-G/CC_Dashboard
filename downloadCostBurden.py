@@ -41,19 +41,18 @@ def download_dataCostBurden(base_uri, token, path, filename):
 
 if __name__ == '__main__':    
     parser = argparse.ArgumentParser()
-#     parser.add_argument('BASE_URI', help='base uri of dataset API')
+    parser.add_argument('BASE_URI', help='base uri of dataset API')
+    parser.add_argument('TOKEN', help='API token for HUDUSER (API token)')
     parser.add_argument('ASSET_PATH', help='input path for datasets')
-#     parser.add_argument('TOKEN', help='API token for HUDUSER')
     parser.add_argument('OUTPUT_FILE', help='GrossRent by BedRooms file (json)')
     
     args = parser.parse_args()
     
     COST_BURDEN             = 'costBurden.csv'
-    datasets_and_uris = {}
-    datasets_and_uris[COST_BURDEN] = 'https://www.huduser.gov/hudapi/public/chas' 
-    token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliODAyYjM0YWY2ZmJlMGUwYjlmZjZkZTMyNWRhM2M0MjNmNTgzZGFjYjcwM2JkZjdjNzAzMGEyZTIyNDRjODUxODlkZDQzNmMxYTY1MmIxIn0.eyJhdWQiOiI2IiwianRpIjoiOWI4MDJiMzRhZjZmYmUwZTBiOWZmNmRlMzI1ZGEzYzQyM2Y1ODNkYWNiNzAzYmRmN2M3MDMwYTJlMjI0NGM4NTE4OWRkNDM2YzFhNjUyYjEiLCJpYXQiOjE2NDMzMDgwNTIsIm5iZiI6MTY0MzMwODA1MiwiZXhwIjoxOTU4ODQwODUyLCJzdWIiOiIyOTM0MCIsInNjb3BlcyI6W119.IR0_v5Z4OrNawpOC3h-m33f1N_PNvKX539pehlrCLrMlCy3eJ5HDL7ddVCViUPiHe3arVJchTmqa7RO-Fc92-A'
+#     token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliODAyYjM0YWY2ZmJlMGUwYjlmZjZkZTMyNWRhM2M0MjNmNTgzZGFjYjcwM2JkZjdjNzAzMGEyZTIyNDRjODUxODlkZDQzNmMxYTY1MmIxIn0.eyJhdWQiOiI2IiwianRpIjoiOWI4MDJiMzRhZjZmYmUwZTBiOWZmNmRlMzI1ZGEzYzQyM2Y1ODNkYWNiNzAzYmRmN2M3MDMwYTJlMjI0NGM4NTE4OWRkNDM2YzFhNjUyYjEiLCJpYXQiOjE2NDMzMDgwNTIsIm5iZiI6MTY0MzMwODA1MiwiZXhwIjoxOTU4ODQwODUyLCJzdWIiOiIyOTM0MCIsInNjb3BlcyI6W119.IR0_v5Z4OrNawpOC3h-m33f1N_PNvKX539pehlrCLrMlCy3eJ5HDL7ddVCViUPiHe3arVJchTmqa7RO-Fc92-A'
         
-    download_dataCostBurden(datasets_and_uris[COST_BURDEN], token, args.ASSET_PATH, args.OUTPUT_FILE)
+    download_dataCostBurden(args.BASE_URI, args.TOKEN, args.ASSET_PATH, args.OUTPUT_FILE)
     cost_burden_df = pd.read_csv(args.ASSET_PATH + args.OUTPUT_FILE)
     cost_burden_df = cost_burden_df.iloc[:, 1:]
     cost_burden_df.to_csv(args.OUTPUT_FILE)
+    
