@@ -49,14 +49,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('BASE_URI', help='base uri of dataset API')
     parser.add_argument('TOKEN', help='API token for HUDUSER (API token)')
-    parser.add_argument('ASSET_PATH', help='input path for datasets')
+    parser.add_argument('ASSETS_PATH', help='input path for datasets')
     parser.add_argument('OUTPUT_FILE', help='GrossRent by BedRooms file (json)')
     
     args = parser.parse_args()    
-    COST_BURDEN             = 'costBurden.csv'
         
-    download_dataCostBurden(args.BASE_URI, args.TOKEN, args.ASSET_PATH, args.OUTPUT_FILE)
-    cost_burden_df = pd.read_csv(args.ASSET_PATH + args.OUTPUT_FILE)
+    download_dataCostBurden(args.BASE_URI, args.TOKEN, args.ASSETS_PATH, args.OUTPUT_FILE)
+    cost_burden_df = pd.read_csv(args.ASSETS_PATH + args.OUTPUT_FILE)
     cost_burden_df = cost_burden_df.iloc[:, 1:]
     cost_burden_df.to_csv(args.OUTPUT_FILE)
     
