@@ -1,0 +1,175 @@
+,NAME,No_of_Rooms,Rent,value
+0,Allegan County,No Rooms,739,739
+1,Isabella County,No Rooms,658,658
+2,Midland County,No Rooms,-666666666,-666666666
+3,Clinton County,No Rooms,-666666666,-666666666
+4,Lenawee County,No Rooms,606,606
+5,St. Clair County,No Rooms,620,620
+6,Washtenaw County,No Rooms,1000,1000
+7,Jackson County,No Rooms,330,330
+8,Macomb County,No Rooms,732,732
+9,Eaton County,No Rooms,773,773
+10,Monroe County,No Rooms,539,539
+11,Oakland County,No Rooms,898,898
+12,Muskegon County,No Rooms,842,842
+13,Lapeer County,No Rooms,1071,1071
+14,Ottawa County,No Rooms,813,813
+15,Berrien County,No Rooms,467,467
+16,Ingham County,No Rooms,722,722
+17,Van Buren County,No Rooms,384,384
+18,Wayne County,No Rooms,666,666
+19,Grand Traverse County,No Rooms,-666666666,-666666666
+20,Genesee County,No Rooms,433,433
+21,Livingston County,No Rooms,465,465
+22,Kalamazoo County,No Rooms,614,614
+23,Marquette County,No Rooms,465,465
+24,Calhoun County,No Rooms,553,553
+25,Kent County,No Rooms,768,768
+26,Saginaw County,No Rooms,553,553
+27,Shiawassee County,No Rooms,331,331
+28,Bay County,No Rooms,650,650
+29,Allegan County,1 Room,563,563
+30,Isabella County,1 Room,612,612
+31,Midland County,1 Room,701,701
+32,Clinton County,1 Room,763,763
+33,Lenawee County,1 Room,557,557
+34,St. Clair County,1 Room,602,602
+35,Washtenaw County,1 Room,997,997
+36,Jackson County,1 Room,640,640
+37,Macomb County,1 Room,797,797
+38,Eaton County,1 Room,676,676
+39,Monroe County,1 Room,634,634
+40,Oakland County,1 Room,846,846
+41,Muskegon County,1 Room,604,604
+42,Lapeer County,1 Room,572,572
+43,Ottawa County,1 Room,775,775
+44,Berrien County,1 Room,589,589
+45,Ingham County,1 Room,727,727
+46,Van Buren County,1 Room,580,580
+47,Wayne County,1 Room,685,685
+48,Grand Traverse County,1 Room,1054,1054
+49,Genesee County,1 Room,628,628
+50,Livingston County,1 Room,871,871
+51,Kalamazoo County,1 Room,732,732
+52,Marquette County,1 Room,693,693
+53,Calhoun County,1 Room,657,657
+54,Kent County,1 Room,766,766
+55,Saginaw County,1 Room,487,487
+56,Shiawassee County,1 Room,517,517
+57,Bay County,1 Room,493,493
+58,Allegan County,2 Rooms,883,883
+59,Isabella County,2 Rooms,701,701
+60,Midland County,2 Rooms,870,870
+61,Clinton County,2 Rooms,784,784
+62,Lenawee County,2 Rooms,746,746
+63,St. Clair County,2 Rooms,766,766
+64,Washtenaw County,2 Rooms,1185,1185
+65,Jackson County,2 Rooms,820,820
+66,Macomb County,2 Rooms,981,981
+67,Eaton County,2 Rooms,873,873
+68,Monroe County,2 Rooms,898,898
+69,Oakland County,2 Rooms,1172,1172
+70,Muskegon County,2 Rooms,778,778
+71,Lapeer County,2 Rooms,876,876
+72,Ottawa County,2 Rooms,935,935
+73,Berrien County,2 Rooms,847,847
+74,Ingham County,2 Rooms,902,902
+75,Van Buren County,2 Rooms,780,780
+76,Wayne County,2 Rooms,898,898
+77,Grand Traverse County,2 Rooms,946,946
+78,Genesee County,2 Rooms,771,771
+79,Livingston County,2 Rooms,984,984
+80,Kalamazoo County,2 Rooms,861,861
+81,Marquette County,2 Rooms,800,800
+82,Calhoun County,2 Rooms,827,827
+83,Kent County,2 Rooms,966,966
+84,Saginaw County,2 Rooms,741,741
+85,Shiawassee County,2 Rooms,740,740
+86,Bay County,2 Rooms,723,723
+87,Allegan County,3 Rooms,910,910
+88,Isabella County,3 Rooms,958,958
+89,Midland County,3 Rooms,934,934
+90,Clinton County,3 Rooms,1242,1242
+91,Lenawee County,3 Rooms,938,938
+92,St. Clair County,3 Rooms,965,965
+93,Washtenaw County,3 Rooms,1280,1280
+94,Jackson County,3 Rooms,940,940
+95,Macomb County,3 Rooms,1227,1227
+96,Eaton County,3 Rooms,1075,1075
+97,Monroe County,3 Rooms,876,876
+98,Oakland County,3 Rooms,1361,1361
+99,Muskegon County,3 Rooms,831,831
+100,Lapeer County,3 Rooms,951,951
+101,Ottawa County,3 Rooms,1274,1274
+102,Berrien County,3 Rooms,1003,1003
+103,Ingham County,3 Rooms,1146,1146
+104,Van Buren County,3 Rooms,873,873
+105,Wayne County,3 Rooms,1051,1051
+106,Grand Traverse County,3 Rooms,1156,1156
+107,Genesee County,3 Rooms,929,929
+108,Livingston County,3 Rooms,1266,1266
+109,Kalamazoo County,3 Rooms,1084,1084
+110,Marquette County,3 Rooms,960,960
+111,Calhoun County,3 Rooms,982,982
+112,Kent County,3 Rooms,1187,1187
+113,Saginaw County,3 Rooms,858,858
+114,Shiawassee County,3 Rooms,855,855
+115,Bay County,3 Rooms,876,876
+116,Allegan County,4 Rooms,1059,1059
+117,Isabella County,4 Rooms,650,650
+118,Midland County,4 Rooms,902,902
+119,Clinton County,4 Rooms,864,864
+120,Lenawee County,4 Rooms,1165,1165
+121,St. Clair County,4 Rooms,1131,1131
+122,Washtenaw County,4 Rooms,1775,1775
+123,Jackson County,4 Rooms,1363,1363
+124,Macomb County,4 Rooms,1280,1280
+125,Eaton County,4 Rooms,926,926
+126,Monroe County,4 Rooms,1646,1646
+127,Oakland County,4 Rooms,1953,1953
+128,Muskegon County,4 Rooms,390,390
+129,Lapeer County,4 Rooms,734,734
+130,Ottawa County,4 Rooms,1193,1193
+131,Berrien County,4 Rooms,958,958
+132,Ingham County,4 Rooms,1024,1024
+133,Van Buren County,4 Rooms,888,888
+134,Wayne County,4 Rooms,1059,1059
+135,Grand Traverse County,4 Rooms,761,761
+136,Genesee County,4 Rooms,903,903
+137,Livingston County,4 Rooms,1730,1730
+138,Kalamazoo County,4 Rooms,713,713
+139,Marquette County,4 Rooms,952,952
+140,Calhoun County,4 Rooms,1213,1213
+141,Kent County,4 Rooms,1202,1202
+142,Saginaw County,4 Rooms,1008,1008
+143,Shiawassee County,4 Rooms,913,913
+144,Bay County,4 Rooms,1058,1058
+145,Allegan County,5 or more Rooms,1104,1104
+146,Isabella County,5 or more Rooms,441,441
+147,Midland County,5 or more Rooms,-666666666,-666666666
+148,Clinton County,5 or more Rooms,-666666666,-666666666
+149,Lenawee County,5 or more Rooms,-666666666,-666666666
+150,St. Clair County,5 or more Rooms,1364,1364
+151,Washtenaw County,5 or more Rooms,1075,1075
+152,Jackson County,5 or more Rooms,815,815
+153,Macomb County,5 or more Rooms,1628,1628
+154,Eaton County,5 or more Rooms,895,895
+155,Monroe County,5 or more Rooms,1354,1354
+156,Oakland County,5 or more Rooms,1234,1234
+157,Muskegon County,5 or more Rooms,-666666666,-666666666
+158,Lapeer County,5 or more Rooms,-666666666,-666666666
+159,Ottawa County,5 or more Rooms,1702,1702
+160,Berrien County,5 or more Rooms,1190,1190
+161,Ingham County,5 or more Rooms,939,939
+162,Van Buren County,5 or more Rooms,953,953
+163,Wayne County,5 or more Rooms,1181,1181
+164,Grand Traverse County,5 or more Rooms,-666666666,-666666666
+165,Genesee County,5 or more Rooms,964,964
+166,Livingston County,5 or more Rooms,2203,2203
+167,Kalamazoo County,5 or more Rooms,1189,1189
+168,Marquette County,5 or more Rooms,-666666666,-666666666
+169,Calhoun County,5 or more Rooms,888,888
+170,Kent County,5 or more Rooms,1621,1621
+171,Saginaw County,5 or more Rooms,874,874
+172,Shiawassee County,5 or more Rooms,-666666666,-666666666
+173,Bay County,5 or more Rooms,-666666666,-666666666
