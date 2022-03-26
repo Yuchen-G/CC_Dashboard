@@ -16,10 +16,13 @@ Note: Run Makefile to download the data required.
 <br>api_token := 'Register for the API at - https://www.huduser.gov/portal/dataset/chas-api.html'</br>
 
 <code>download: input/GrossRentByBedRooms.json input/costBurden.csv
-<br>
+
+
 input/GrossRentByBedRooms.json:
+
     python downloadGrossRent.py $(base_uri_gross_rent) input/ GrossRentByBedRooms.json
 
 
 input/costBurden.csv:
-	python downloadCostBurden.py $(base_uri_cost_burden) $(api_token) input/ costBurden.csv</code>
+	
+    python downloadCostBurden.py $(base_uri_cost_burden) $(api_token) input/ costBurden.csv</code>
