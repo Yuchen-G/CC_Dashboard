@@ -26,6 +26,13 @@ def createPredicatesGrossRent(tableId, var_cnt):
   return(predicates)
 
 def download_data(base_uri,predicates, path, filename, headers=''):
+    '''
+    downloads data for costBurden Metric
+    base_uri - HUD API URI (https://www.huduser.gov/hudapi/public/chas)
+    predicates - parameters used to connect to API
+    path - system path, where downloaded needs to be written
+    filename - filename, which would be used to write the downloaded data
+    '''    
     filepath = path + filename
     if os.path.isfile(filepath):
         print(filepath)

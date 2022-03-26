@@ -20,14 +20,20 @@ def createPredicatesCostBurden(county, token):
 
 # Download Cost Burden data
 def download_dataCostBurden(base_uri, token, path, filename):
+    '''
+    downloads data for costBurden Metric
+    base_uri - HUD API URI (https://www.huduser.gov/hudapi/public/chas)
+    token - API token to access the API, user needs to register for the API to get the token
+    path - system path, where downloaded needs to be written
+    filename - filename, which would be used to write the downloaded data
+    '''
     filepath = path + filename
     if os.path.isfile(filepath):
         print(filepath)
         print('file already exists, no need to download')
     else:
-        for county in range(1, 166):
+        for county in range(1, 166, 2):
           predicates, headers = createPredicatesCostBurden(county, token)
-          # print(base_uri, predicates, headers)
           result = requests.get(base_uri, params=predicates, headers=headers) 
           if result.status_code == 200:
             if county !=1:
@@ -46,10 +52,8 @@ if __name__ == '__main__':
     parser.add_argument('ASSET_PATH', help='input path for datasets')
     parser.add_argument('OUTPUT_FILE', help='GrossRent by BedRooms file (json)')
     
-    args = parser.parse_args()
-    
+    args = parser.parse_args()    
     COST_BURDEN             = 'costBurden.csv'
-#     token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliODAyYjM0YWY2ZmJlMGUwYjlmZjZkZTMyNWRhM2M0MjNmNTgzZGFjYjcwM2JkZjdjNzAzMGEyZTIyNDRjODUxODlkZDQzNmMxYTY1MmIxIn0.eyJhdWQiOiI2IiwianRpIjoiOWI4MDJiMzRhZjZmYmUwZTBiOWZmNmRlMzI1ZGEzYzQyM2Y1ODNkYWNiNzAzYmRmN2M3MDMwYTJlMjI0NGM4NTE4OWRkNDM2YzFhNjUyYjEiLCJpYXQiOjE2NDMzMDgwNTIsIm5iZiI6MTY0MzMwODA1MiwiZXhwIjoxOTU4ODQwODUyLCJzdWIiOiIyOTM0MCIsInNjb3BlcyI6W119.IR0_v5Z4OrNawpOC3h-m33f1N_PNvKX539pehlrCLrMlCy3eJ5HDL7ddVCViUPiHe3arVJchTmqa7RO-Fc92-A'
         
     download_dataCostBurden(args.BASE_URI, args.TOKEN, args.ASSET_PATH, args.OUTPUT_FILE)
     cost_burden_df = pd.read_csv(args.ASSET_PATH + args.OUTPUT_FILE)
