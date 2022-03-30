@@ -9,6 +9,8 @@ df2 = pd.read_excel('mi_2021_oor_data.xlsx', sheet_name='Sheet1')
 df2 = df2[['COUNTY/METRO','Income needed to afford 1 bdrm FMR', 'Income needed to afford 2 bdrm FMR']]
 df2 = df2.dropna()
 
+st.title('Income needed to afford Fair Market Rent (FMR)')
+
 #Toggle data display
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
@@ -18,12 +20,19 @@ if st.checkbox('Show raw data'):
 if st.checkbox('Show filtered data'):
     st.subheader('Filtered data')
     full_county_list = list(df2['COUNTY/METRO'].values)
-    options = st.multiselect('Select counties to inspect',
+    options = st.multiselect('Select counties to inspect - at most 3 locations',
     full_county_list)
-    our_counties = options
-    df2 = df2[df2['COUNTY/METRO'].isin(our_counties)]
-    df2 = pd.melt(df2, id_vars=['COUNTY/METRO'])
-    st.write(df2)
+    
+    button = st.button("Print Locations",disabled=False)
+
+    
+    if len(options) <= 3:
+        our_counties = options
+        df2 = df2[df2['COUNTY/METRO'].isin(our_counties)]
+        df2 = pd.melt(df2, id_vars=['COUNTY/METRO'])
+        st.write(df2)
+    else:
+        st.warning("You have to select only 3 locations")
 
 
 #g.despine(left=True)
