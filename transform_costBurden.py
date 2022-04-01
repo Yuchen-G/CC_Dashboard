@@ -89,11 +89,11 @@ def costBurdenIncomeClean(ASSETS_PATH, COST_BURDEN):
     cost_burden_dict = createCostBurdenDict(cost_burdens_income, cost_burden_display)
     income_df.loc[:, 'cost_burden'] = income_df['cost_burden'].map(cost_burden_dict)
 
-    income_df = income_df.melt(id_vars=['cost_burden', 'household_income'])
+    income_df = income_df.melt(id_vars=['cost_burden', 'household_income'], var_name='county')
 
-    income_df = income_df.groupby(['cost_burden', 'household_income', 'variable']).sum().reset_index()
+    income_df = income_df.groupby(['cost_burden', 'household_income', 'county']).sum().reset_index()
     income_df.loc[:, 'cost_burden'] = pd.Categorical(income_df.cost_burden, cost_burden_display, ordered=True)
-    income_df = income_df.sort_values(by='cost_burden')
+    income_df = income_df.sort_values(by=['county', 'cost_burden']).reset_index(drop=True)
     return(income_df)
 
 
@@ -137,7 +137,7 @@ def costBurdenTenureClean(ASSETS_PATH, COST_BURDEN):
     df.columns = cost_burden_cols                 
 
     # change the data from long to wide format for viz purpose
-    df = df.melt(id_vars=['cost_burden', 'tenure'])
+    df = df.melt(id_vars=['cost_burden', 'tenure'], var_name='county')
     # cleanup the tenure column
     df['tenure'] = df.iloc[:, 1].str.replace(')', '', regex=False).str.split(expand=True).iloc[:, 0]
 
@@ -147,7 +147,7 @@ def costBurdenTenureClean(ASSETS_PATH, COST_BURDEN):
 
     # change the data type of cost_burden from object to categorical(required for arranging the segments in stacked bars) 
     df.loc[:, 'cost_burden'] = pd.Categorical(df.cost_burden, cost_burden_display, ordered=True)
-    df = df.sort_values('cost_burden')
+    df = df.sort_values(['county', 'cost_burden']).reset_index(drop=True)
     return(df)                    
 
 

@@ -2,7 +2,7 @@
 county := 'Wayne County'
 
 # variables declared for GrossRentByBedRooms metric
-base_uri_gross_rent := 'https://api.census.gov/data/2019/acs/acs1'
+base_uri_gross_rent := 'https://api.census.gov/data/2020/acs/acs5'
 
 # variables declared for costBurden metric
 base_uri_cost_burden := 'https://www.huduser.gov/hudapi/public/chas'

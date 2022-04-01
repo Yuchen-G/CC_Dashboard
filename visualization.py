@@ -32,7 +32,7 @@ def createBars(df, cols, county, labelTitle, tooltipTitle, col_sort_order):
                         alt.Tooltip(f'{valueCol}:Q', title=f'{tooltipTitle}'),
                         alt.Tooltip('pct:Q', title='Percent', format='0.0%')                    
                       ]
-      ).transform_filter(datum.variable == f'{county}') 
+      ).transform_filter(datum.county == f'{county}') 
     return(bars)
 
 def createText(df, cols, county, labelTitle, col_sort_order):
@@ -54,7 +54,7 @@ def createText(df, cols, county, labelTitle, col_sort_order):
                             detail='pct:Q',
                             order=alt.Order('cost_burden_index:Q',
                                             sort='ascending')
-                ).transform_filter(datum.variable == f'{county}')
+                ).transform_filter(datum.county == f'{county}')
         return(text)
     
 cost_burden_display = ['Severly Cost Burdened (50% or more)', 'Cost Burdened (30% or more, but less than 50%)','Unburdened (Less than 30%)']
