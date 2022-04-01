@@ -10,7 +10,7 @@ Note: Run Makefile to download the data required.
 
 **Data Sources**
 <br>**API URI used for GrossRentByBedRooms metric**
-<br>base_uri_gross_rent := 'https://api.census.gov/data/2019/acs/acs1'</br>
+<br>base_uri_gross_rent := 'https://api.census.gov/data/2020/acs/acs5'</br>
 
 **API URI used for costBurden metric**
 <br>base_uri_cost_burden := 'https://www.huduser.gov/hudapi/public/chas'</br>
