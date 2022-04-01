@@ -11,7 +11,7 @@ api_token := 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjliODAyYjM0YWY2ZmJlMG
 
 # dependencies to run
 visualization: transformCostBurden transformGrossRentByBedroom
-	python visualization.py assets/ $(county) cost_burden_income.csv cost_burden_tenure.csv cost_burden_income.html cost_burden_tenure.html
+	python visualization.py assets/ $(county) cost_burden_income.csv cost_burden_tenure.csv gross_rent_est.csv cost_burden_income.html cost_burden_tenure.html gross_rent_by_bedrooms.html
 
 # creates transformed data from downloaded datasets
 transform: transformCostBurden transformGrossRentByBedroom

@@ -72,18 +72,20 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('ASSETS_PATH', help='input path for datasets')
     parser.add_argument('COUNTY', help='GrossRent by BedRooms file (json)')
-    parser.add_argument('COST_BURDEN_INCOME', help='GrossRent by BedRooms file (json)')
-    parser.add_argument('COST_BURDEN_TENURE', help='GrossRent by BedRooms file (json)')    
-    parser.add_argument('COST_BURDEN_INCOME_IMG', help='GrossRent by BedRooms file (json)')
-    parser.add_argument('COST_BURDEN_TENURE_IMG', help='GrossRent by BedRooms file (json)')    
-
+    parser.add_argument('COST_BURDEN_INCOME', help='Cost burden by income transformed file (csv)')
+    parser.add_argument('COST_BURDEN_TENURE', help='Cost burden by tenure transformed file (csv)')
+    parser.add_argument('GROSS_RENT_BY_BEDROOMS', help='GrossRent by BedRooms file (csv)')    
+    parser.add_argument('COST_BURDEN_INCOME_IMG', help='Cost burden by income output viz file (html)')
+    parser.add_argument('COST_BURDEN_TENURE_IMG', help='Cost burden by tenure output viz file(html)')
+    parser.add_argument('GROSS_RENT_BY_BEDROOMS_IMG', help='GrossRent by BedRooms file (html)')    
     
-    args = parser.parse_args()    
-        
-    cost_burden_income_df = pd.read_csv(args.ASSETS_PATH + args.COST_BURDEN_INCOME)
-    income_cols = list(cost_burden_income_df.columns)
+    args = parser.parse_args()            
     county = args.COUNTY
     
+# create visualization for metric - cost_burden_by_income    
+    cost_burden_income_df = pd.read_csv(args.ASSETS_PATH + args.COST_BURDEN_INCOME)
+    income_cols = list(cost_burden_income_df.columns)
+
     bars = createBars(cost_burden_income_df, income_cols, county, labelTitle, tooltipTitle, household_incomes_ord)
     text = createText(cost_burden_income_df, income_cols, county, labelTitle, household_incomes_ord)
 
@@ -99,7 +101,7 @@ if __name__ == '__main__':
     
     income_chart.save(args.ASSETS_PATH + args.COST_BURDEN_INCOME_IMG, embed_options={'renderer':'svg'})
     
-    
+# create visualization for metric - cost_burden_by_tenure    
     cost_burden_tenure_df = pd.read_csv(args.ASSETS_PATH + args.COST_BURDEN_TENURE)
     tenure_cols = list(cost_burden_tenure_df.columns)
 
@@ -117,3 +119,18 @@ if __name__ == '__main__':
                                      grid=False, domain=False)
     
     tenure_chart.save(args.ASSETS_PATH + args.COST_BURDEN_TENURE_IMG, embed_options={'renderer':'svg'})
+    
+# create visualization for metric - gross_rent_by_bedrooms    
+    sort_order = ['No Rooms', '1 Room', '2 Rooms', '3 Rooms', '4 Rooms', '5 or more Rooms']
+    gross_rent_est_df = pd.read_csv(args.ASSETS_PATH + args.GROSS_RENT_BY_BEDROOMS)
+    bars = alt.Chart(gross_rent_est_df).mark_bar(color='orange').encode(
+            x=alt.X('No_of_Rooms:N', sort=sort_order, axis=alt.Axis(title='')),
+            y = alt.Y('Rent:Q',axis=alt.Axis(title='Median Gross Rent in Dollars -($)')),
+            tooltip=['No_of_Rooms', 'Rent']
+    ).transform_filter(datum.NAME == f'{county}'
+    ).properties(width=350, height=350, title='Median Gross Rent by Bedrooms - ' + f'{county}')
+
+    grossRentByBedrooms_chart = bars.configure_title(fontSize=20
+    ).configure_axis(labelFontSize=15, titleFontSize=17)    
+    
+    grossRentByBedrooms_chart.save(args.ASSETS_PATH + args.GROSS_RENT_BY_BEDROOMS_IMG, embed_options={'renderer':'svg'})
