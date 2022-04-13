@@ -26,7 +26,7 @@ def createBars(df, cols, county, labelTitle, tooltipTitle, col_sort_order):
                 color=alt.Color(f'{metricCol1}:N',
                     scale=alt.Scale(domain=cost_burden_display, range=range_),
                     legend=alt.Legend(orient='none', direction='horizontal',
-                    legendX=-50, legendY=-30, title=f'{labelTitle}', 
+                    legendY=-30, title=f'{labelTitle}', 
                     titleAnchor='middle', titleFontSize=15)),
                 order=alt.Order('cost_burden_index:Q', sort='ascending'),
                 tooltip=[
@@ -102,9 +102,19 @@ if __name__ == '__main__':
                                               "anchor":"start"}
                     ).configure_view(strokeWidth=0
                     ).configure_axis(labelFontSize=15, 
-                                     grid=False, domain=False)  
+                                     grid=False, domain=False,labelLimit=250
+                    ).configure_legend(labelLimit=0)    
     
-#     income_chart.save(args.ASSETS_PATH + args.COST_BURDEN_INCOME_IMG, embed_options={'renderer':'svg'})
+    idx = cost_burdened_idx = np.where((cost_burden_income_df['county'] == county) &
+                                 (cost_burden_income_df['household_income'] == 'Extremely Low Income (0-30% AMI)'))
+    cost_burdened_idx = np.where((cost_burden_income_df['county'] == county)  &
+                                   (cost_burden_income_df['household_income'] == 'Extremely Low Income (0-30% AMI)') &
+                                   (cost_burden_income_df['cost_burden'].isin(['Severly Cost Burdened (50% or more)', 
+                                                                'Cost Burdened (30% or more, but less than 50%)'])))
+
+    cost_burden_stat = round(cost_burden_income_df.loc[cost_burdened_idx].sum()['value'] * 100  \
+                                            / cost_burden_income_df.loc[idx].sum()['value'], 2)
+    cost_burden_brief = str(cost_burden_stat) + '% of extremely low-income households (0-30% AMI) in ' + county + ' are cost burdened.'
     
     
     cost_burden_tenure_df = pd.read_csv(args.ASSETS_PATH + args.COST_BURDEN_TENURE)
@@ -121,9 +131,19 @@ if __name__ == '__main__':
                                               "anchor":"start"}
                     ).configure_view(strokeWidth=0
                     ).configure_axis(labelFontSize=15, 
-                                     grid=False, domain=False)
+                                     grid=False, domain=False,labelLimit=250
+                    ).configure_legend(labelLimit=0)    
     
-#     tenure_chart.save(args.ASSETS_PATH + args.COST_BURDEN_TENURE_IMG, embed_options={'renderer':'svg'})
+    idx = cost_burdened_idx = np.where((cost_burden_tenure_df['county'] == county) &
+                                 (cost_burden_tenure_df['tenure'] == 'Renter'))
+    tenure_idx = np.where((cost_burden_tenure_df['county'] == county)  &
+                                   (cost_burden_tenure_df['tenure'] == 'Renter') &
+                                   (cost_burden_tenure_df['cost_burden'].isin(['Severly Cost Burdened (50% or more)', 
+                                                                'Cost Burdened (30% or more, but less than 50%)'])))
+
+    tenure_stat = round(float(cost_burden_tenure_df.loc[tenure_idx].sum()['value']) * 100   \
+                                            / float(cost_burden_tenure_df.loc[idx].sum()['value']), 2)
+    tenure_brief = str(tenure_stat) + ' % of the renters in ' + county + ' are cost burdened.'
 
     county = add_county
     gross_rent_est_df = pd.read_csv(args.ASSETS_PATH + 'gross_rent_est.csv')
@@ -136,9 +156,6 @@ if __name__ == '__main__':
     ).configure_title(fontSize=20
     ).configure_axis(labelFontSize=15, titleFontSize=17
     ).properties(width=600, height=400, title='Median Gross Rent by Bedrooms - ' + f'{county}')
-
-    # gross_rent_by_bedrooms_chart = bars.configure_title(fontSize=20
-    # ).configure_axis(labelFontSize=15, titleFontSize=17)
 
     st.title('CHN Affordable Housing Dashboard')
     st.title('')
@@ -153,20 +170,24 @@ if __name__ == '__main__':
         ('Explore Tabular Data', 'Explore Chart')
     )
 
-    indx = np.where(cost_burden_income_df['county'] == county)
-
+    df_indx = np.where(cost_burden_income_df['county'] == county)
+    dashboard_brief = "**Certain households are more likely than others to live in an unaffordable home.**\
+                        Cost burden is unevenly distributed among county residents based on income, race and ethnicity, housing tenure   (whether they own or rent), and age. An equitable approach to reducing cost burden will reduce the disparities where the need is the greatest."
+    st.write(dashboard_brief)
     if choosen_metric == 'Cost burden by Income':
         if explore_metric == 'Explore Tabular Data':
-            st.write(cost_burden_income_df.loc[indx])
+            st.write(cost_burden_income_df.loc[df_indx])
         else:
             st.altair_chart(income_chart, use_container_width=True)
-        st.write('Source: https://www.huduser.gov/hudapi/public/chas')
+        st.write(str(cost_burden_brief))
+        st.write('Data Source: https://www.huduser.gov/portal/dataset/chas-api.html')
     elif choosen_metric == 'Cost burden by Tenure':
         if explore_metric == 'Explore Tabular Data':
             st.write(cost_burden_tenure_df)
         else:        
             st.altair_chart(tenure_chart, use_container_width=True)
-        st.write('Source: https://www.huduser.gov/hudapi/public/chas')
+        st.write(tenure_brief)
+        st.write('Data Source: https://www.huduser.gov/portal/dataset/chas-api.html')
     else:
         if explore_metric == 'Explore Tabular Data':
             st.write(gross_rent_est_df[gross_rent_est_df['NAME'] == county])

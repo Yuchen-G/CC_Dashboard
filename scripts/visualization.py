@@ -24,7 +24,7 @@ def createBars(df, cols, county, labelTitle, tooltipTitle, col_sort_order):
                 color=alt.Color(f'{metricCol1}:N',
                     scale=alt.Scale(domain=cost_burden_display, range=range_),
                     legend=alt.Legend(orient='none', direction='horizontal',
-                    legendX=-50, legendY=-30, title=f'{labelTitle}', 
+                    legendY=-30, title=f'{labelTitle}', 
                     titleAnchor='middle', titleFontSize=15)),
                 order=alt.Order('cost_burden_index:Q', sort='ascending'),
                 tooltip=[
@@ -97,8 +97,8 @@ if __name__ == '__main__':
                                               "anchor":"start"}
                     ).configure_view(strokeWidth=0
                     ).configure_axis(labelFontSize=15, 
-                                     grid=False, domain=False)  
-    
+                         grid=False, domain=False,labelLimit=250
+                    ).configure_legend(labelLimit=0)    
     income_chart.save(args.ASSETS_PATH + args.COST_BURDEN_INCOME_IMG, embed_options={'renderer':'svg'})
     
 # create visualization for metric - cost_burden_by_tenure    
@@ -116,8 +116,8 @@ if __name__ == '__main__':
                                               "anchor":"start"}
                     ).configure_view(strokeWidth=0
                     ).configure_axis(labelFontSize=15, 
-                                     grid=False, domain=False)
-    
+                                     grid=False, domain=False,labelLimit=250
+                    ).configure_legend(labelLimit=0)    
     tenure_chart.save(args.ASSETS_PATH + args.COST_BURDEN_TENURE_IMG, embed_options={'renderer':'svg'})
     
 # create visualization for metric - gross_rent_by_bedrooms    
