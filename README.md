@@ -2,7 +2,41 @@
 
 This is the dashboard created to provide inputs to CHN team.
 
-### Usage
+### Usage - Metric 2 - Income needed to afford Fair Market Rent (FMR)
+
+**County for which chart needs to be generated**
+<br>county := 'Wayne County'</br> (Choose 3 counties maximum)
+
+**Data Sources**
+<br>**NLIHC Out of Reach 2021**
+<br>assets/mi_2021_oor_data.xlsx</br>
+
+**dependencies to run**
+<code>
+visualization: 
+	python streamlit run scripts/metric_2.py </code>
+	
+
+### Usage - Metric 3 - Demographic Analysis (Race and Ethnicity)
+Note: Run script to download the data required from the API's. 
+
+**County for which chart needs to be generated**
+<br>county := 'Wayne County, Oakland County, Macomb County'</br>
+
+**Data Sources**
+<br>**API URL used for Race Population Count**
+<br>base_url_race : "http://api.census.gov/data/2020/dec/pl"</br>
+
+<br>**API URL used for Ethnic Population Count**
+<br>base_url_race : "http://api.census.gov/data/2020/dec/pl"</br>
+
+**dependencies to run**
+<code>
+visualization: 
+	python streamlit run scripts/demographic_analysis.py </code>
+
+
+### Usage - Metric 4
 Note: Run Makefile to download the data required. 
 
 **County for which chart needs to be generated**
