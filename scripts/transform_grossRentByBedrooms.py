@@ -17,11 +17,15 @@ def cleanGrossRent(ASSETS_PATH, GROSS_RENT_BY_BEDROOMS):
     return(df)  
 
 def cleanGrossRentEst(df, cols_rooms):
+#     values of -222222222 and -666666666 indicative of 'Values not available'
     df = df.iloc[:, :6]
     df.columns = cols_rooms
     df.reset_index(inplace=True)
     df = df.melt(id_vars='NAME', var_name='No_of_Rooms', value_name='Rent')
-    df['value'] = df['Rent'].astype('int32')
+    df['Rent'] = df['Rent'].astype('int32')
+#     replacing values not available with ZERO for viz purpose.
+    df['Rent'] = df['Rent'].apply(lambda x: x if x > -222222222 else 0)
+    df = df.sort_values(by=['NAME', 'No_of_Rooms']).reset_index(drop=True)
     return(df)
 
 def cleanGrossRentMoe(df, cols_rooms):
@@ -37,9 +41,9 @@ if __name__ == '__main__':
     parser.add_argument('GROSS_RENT_BY_BEDROOMS', help='downloaded gross_rent_by_bedromms input file (json)')        
     parser.add_argument('OUTPUT_FILE', help='transformed GrossRent by BedRooms file (csv)')
     
-    args = parser.parse_args()    
+    args = parser.parse_args()
         
     gross_rent_df = cleanGrossRent(args.ASSETS_PATH, args.GROSS_RENT_BY_BEDROOMS)  
     gross_rent_est_df  = cleanGrossRentEst(gross_rent_df, cols_rooms)
     
-    gross_rent_est_df.to_csv(args.ASSETS_PATH + args.OUTPUT_FILE)
+    gross_rent_est_df.to_csv(args.ASSETS_PATH + args.OUTPUT_FILE, index=False)
