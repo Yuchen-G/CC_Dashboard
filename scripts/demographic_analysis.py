@@ -108,7 +108,7 @@ def download_data(base_uri,predicates, path, filename, headers=''):
 tableId = 'P1'
 var_cnt = 9
 predicates = createPredicatesRaceandEthnicityPopCount(tableId, var_cnt)
-ASSETS_PATH = ''
+ASSETS_PATH = 'assets/'
 download_data(datasets_and_uris[RACE_POP_COUNT],predicates, ASSETS_PATH, RACE_POP_COUNT)
 
 
@@ -118,14 +118,14 @@ download_data(datasets_and_uris[RACE_POP_COUNT],predicates, ASSETS_PATH, RACE_PO
 tableId = 'P2'
 var_cnt = 3
 predicates = createPredicatesRaceandEthnicityPopCount(tableId, var_cnt)
-ASSETS_PATH = ''
+ASSETS_PATH = 'assets/'
 download_data(datasets_and_uris[ETHNIC_COUNT],predicates, ASSETS_PATH, ETHNIC_COUNT)
 
 # %% [markdown]
 # ## Data Transformations - One Race Population Count and Two or More Races Total Population Count
 
 # %%
-race_pop_count_df = pd.read_json('RacePopCount.json')
+race_pop_count_df = pd.read_json('assets/RacePopCount.json')
 race_pop_count_df.rename(columns={0:'total', 1:'one_tot',2:'one_wht', 3:'one_blk',
 4:'one_ind', 5:'one_asn', 6:'one_pacific', 7:'one_other', 8:'two_more_total', 9:'NAME', 10:'state', 11:'county'}, inplace=True)
 race_pop_count_df = race_pop_count_df.iloc[1:, :]
@@ -163,7 +163,7 @@ race_pop_count_df = dataframe_pct(race_pop_count_df, our_counties)
 # ## Data Transformations - Ethnic Population Count Hispanic and Non-Hispanic
 
 # %%
-ethnic_pop_count_df = pd.read_json('EthnicPopCount.json')
+ethnic_pop_count_df = pd.read_json('assets/EthnicPopCount.json')
 
 
 # %%
