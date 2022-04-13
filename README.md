@@ -34,6 +34,12 @@ Note: Run script to download the data required from the API's.
 <code>
 visualization: 
 	python streamlit run scripts/demographic_analysis.py </code>
+	
+**downloads required datasets for both the metrics(race and ethnicity)**
+<code>
+assets/RacePopCount.json:
+assets/EthnicPopCount.json</code>
+
 
 
 ### Usage - Metric 4
