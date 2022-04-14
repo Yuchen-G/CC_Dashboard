@@ -8,13 +8,13 @@ This is the dashboard created to provide inputs to CHN team.
 <br>county := 'Wayne County'</br> (Choose 3 counties maximum)
 
 **Data Sources**
-<br>**NLIHC Out of Reach 2021**
-<br>assets/mi_2021_oor_data.xlsx</br>
+<br>**ACS 1 Year Survey 2019**
+<br>assets/ACSDT1Y2019.B25070-2022-01-21T214228.csv</br>
 
 **dependencies to run**
 <code>
 visualization local display: 
-	python streamlit run scripts/metric_2.py </code>
+	python streamlit run scripts/Gross_Rent_Yuchen.py </code>
 
 
 ### Usage - Metric 2 - Income needed to afford Fair Market Rent (FMR)
