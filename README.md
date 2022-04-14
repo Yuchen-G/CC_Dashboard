@@ -57,7 +57,7 @@ assets/EthnicPopCount.json</code>
 
 
 
-### Usage - Metric 4
+### Usage - Metric 4 - Gross Rent by Bedrooms; Cost Burden
 Note: Run Makefile to download the data required. 
 
 **County for which chart needs to be generated**
