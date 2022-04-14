@@ -8,7 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-df1 = pd.read_csv('assets/+ACSDT1Y2019.B25070-2022-01-21T214228.csv', decimal=",")
+df1 = pd.read_csv('assets/ACSDT1Y2019.B25070-2022-01-21T214228.csv', decimal=",")
 
 
 # Toggle data display
