@@ -2,6 +2,21 @@
 
 This is the dashboard created to provide inputs to CHN team.
 
+### Usage - Metric 1 - Gross Rent Burden
+
+**County for which chart needs to be generated**
+<br>county := 'Wayne County'</br> (Choose 3 counties maximum)
+
+**Data Sources**
+<br>**NLIHC Out of Reach 2021**
+<br>assets/mi_2021_oor_data.xlsx</br>
+
+**dependencies to run**
+<code>
+visualization local display: 
+	python streamlit run scripts/metric_2.py </code>
+
+
 ### Usage - Metric 2 - Income needed to afford Fair Market Rent (FMR)
 
 **County for which chart needs to be generated**
@@ -13,7 +28,7 @@ This is the dashboard created to provide inputs to CHN team.
 
 **dependencies to run**
 <code>
-visualization: 
+visualization local display: 
 	python streamlit run scripts/metric_2.py </code>
 	
 
@@ -32,7 +47,7 @@ Note: Run script to download the data required from the API's.
 
 **dependencies to run**
 <code>
-visualization: 
+visualization local display: 
 	python streamlit run scripts/demographic_analysis.py </code>
 	
 **downloads required datasets for both the metrics(race and ethnicity)**
